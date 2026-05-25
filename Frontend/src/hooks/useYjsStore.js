@@ -207,8 +207,11 @@ export function useYjsStore({ yDoc, provider, username }) {
     if (provider.synced) {
       handleSync();
     } else {
-      provider.on("synced", handleSync);
-      unsubs.push(() => provider.off("synced", handleSync));
+      const onSync = (isSynced) => {
+        if (isSynced) handleSync();
+      };
+      provider.on("sync", onSync);
+      unsubs.push(() => provider.off("sync", onSync));
     }
 
     // fallback if no synced event or property

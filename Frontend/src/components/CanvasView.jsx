@@ -22,7 +22,7 @@ export default function CanvasView({ ydoc, provider, username }) {
   };
 
   return (
-    <div className="h-full w-full">
+    <div className="h-full w-full" style={{ touchAction: 'none' }}>
       {storeWithStatus.status === "loading" ? (
         <div className="h-full w-full flex items-center justify-center text-neutral-600 text-sm font-medium">
           Loading Canvas...
