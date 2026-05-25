@@ -5,6 +5,7 @@ import Sidebar from "../components/Sidebar";
 import EditorHeader from "../components/EditorHeader";
 import CodeView from "../components/CodeView";
 import CanvasView from "../components/CanvasView";
+import { useCollaboration } from "../hooks/useCollaboration";
 
 export default function App() {
   const [language, setLanguage] = useState("java");
@@ -15,6 +16,8 @@ export default function App() {
   const [username, setUsername] = useState(() => {
     return new URLSearchParams(window.location.search).get("username") || "";
   });
+
+  const { ydoc, provider } = useCollaboration({ username, onUsersChange: setUsers });
 
   const handleLanguageChange = (newLang) => {
     setLanguage(newLang);
@@ -53,9 +56,9 @@ export default function App() {
 
         <div className="flex-1 overflow-hidden bg-[#1e1e1e]">
           {view === "code" ? (
-            <CodeView language={language} value={value} onChange={setValue} username={username} onUsersChange={setUsers} />
+            <CodeView language={language} value={value} onChange={setValue} ydoc={ydoc} provider={provider} />
           ) : (
-            <CanvasView />
+            <CanvasView ydoc={ydoc} provider={provider} username={username} />
           )}
         </div>
       </section>
