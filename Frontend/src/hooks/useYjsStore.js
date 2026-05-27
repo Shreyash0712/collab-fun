@@ -37,8 +37,12 @@ export function useYjsStore({ yDoc, provider, username }) {
     setStoreWithStatus({ status: "loading" });
 
     const unsubs = [];
+    let hasSynced = false;
 
     function handleSync() {
+      if (hasSynced) return;
+      hasSynced = true;
+
       // === DOCUMENT ==========================================================
 
       // Initialize tldraw with Yjs doc records, or if Yjs empty,
