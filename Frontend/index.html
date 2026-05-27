@@ -6,6 +6,21 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>Collab Fun</title>
+  <script>
+    const originalAddEventListener = EventTarget.prototype.addEventListener;
+    EventTarget.prototype.addEventListener = function(type, listener, options) {
+      if (type === 'touchstart' || type === 'touchmove' || type === 'wheel') {
+        if (typeof options === 'object') {
+          options.passive = false;
+        } else if (typeof options === 'boolean') {
+          options = { capture: options, passive: false };
+        } else {
+          options = { passive: false };
+        }
+      }
+      return originalAddEventListener.call(this, type, listener, options);
+    };
+  </script>
 </head>
 
 <body>

@@ -13,7 +13,6 @@
     "@monaco-editor/react": "^4.7.0",
     "@tailwindcss/vite": "^4.2.4",
     "@tldraw/sync": "^5.0.1",
-    "default-passive-events": "^4.0.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "tailwindcss": "^4.2.4",
