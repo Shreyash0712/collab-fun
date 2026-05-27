@@ -6,6 +6,8 @@ COPY ./Frontend/package*.json ./
 RUN npm ci
 
 COPY ./Frontend .
+ARG VITE_TLDRAW_KEY
+ENV VITE_TLDRAW_KEY=$VITE_TLDRAW_KEY
 RUN npm run build
 
 

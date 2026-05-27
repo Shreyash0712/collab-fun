@@ -29,6 +29,7 @@ export default function CanvasView({ ydoc, provider, username }) {
         </div>
       ) : (
         <Tldraw
+          licenseKey={import.meta.env.VITE_TLDRAW_KEY}
           store={storeWithStatus.store}
           autoFocus
           assets={myAssetStore}
